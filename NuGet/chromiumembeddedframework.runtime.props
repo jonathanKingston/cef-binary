@@ -6,6 +6,8 @@
   <ItemGroup>
     <CefRuntimeWin32Locales Include="$(MSBuildThisFileDirectory)..\CEF\win-x86\locales\*.*" />
 	<CefRuntimeWin64Locales Include="$(MSBuildThisFileDirectory)..\CEF\win-x64\locales\*.*" />
+  <!--
     <CefRuntimeWinArm64Locales Include="$(MSBuildThisFileDirectory)..\CEF\win-arm64\locales\*.*" />
+    -->
   </ItemGroup>
 </Project>
