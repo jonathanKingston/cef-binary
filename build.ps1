@@ -14,7 +14,7 @@ param(
 	[string] $CefBinaryDir = "../cefsource/chromium/src/cef/binary_distrib/",
 
 	[Parameter(Position = 3)]
-	$CefVersion = "121.2.14+ga44b59f+chromium-121.0.6167.75",
+	$CefVersion = "126.2.9+g169fea9+chromium-126.0.6478.127",
 
 	[ValidateSet("tar.bz2","zip","7z")]
 	[Parameter(Position = 4)]
@@ -306,8 +306,8 @@ function Msvs
 			$cmake_path = $env:ChocolateyInstall + "\bin\" + $cmake_path;           
 		}
 		&"$cmake_path" --version
-		Write-Diagnostic "Running cmake: $cmake_path  -Wno-dev -LAH -G '$CmakeGenerator' -A $Arch -DUSE_SANDBOX=Off -DCEF_RUNTIME_LIBRARY_FLAG=/MD ."
-		&"$cmake_path"  -Wno-dev -LAH -G "$CmakeGenerator" -A $Arch -DUSE_SANDBOX=Off -DCEF_RUNTIME_LIBRARY_FLAG=/MD .
+		Write-Diagnostic "Running cmake: $cmake_path  -Wno-dev -LAH -G '$CmakeGenerator' -A $Arch -DCEF_RUNTIME_LIBRARY_FLAG=/MD ."
+		&"$cmake_path"  -Wno-dev -LAH -G "$CmakeGenerator" -A $Arch -DCEF_RUNTIME_LIBRARY_FLAG=/MD .
 		Pop-Location
 
 		$Arguments = @(
