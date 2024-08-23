@@ -306,8 +306,8 @@ function Msvs
 			$cmake_path = $env:ChocolateyInstall + "\bin\" + $cmake_path;           
 		}
 		&"$cmake_path" --version
-		Write-Diagnostic "Running cmake: $cmake_path  -Wno-dev -LAH -G '$CmakeGenerator' -A $Arch -DUSE_SANDBOX=Off -DCEF_RUNTIME_LIBRARY_FLAG=/MD ."
-		&"$cmake_path"  -Wno-dev -LAH -G "$CmakeGenerator" -A $Arch -DUSE_SANDBOX=Off -DCEF_RUNTIME_LIBRARY_FLAG=/MD .
+		Write-Diagnostic "Running cmake: $cmake_path  -Wno-dev -LAH -G '$CmakeGenerator' -A $Arch -DCEF_RUNTIME_LIBRARY_FLAG=/MD ."
+		&"$cmake_path"  -Wno-dev -LAH -G "$CmakeGenerator" -A $Arch -DCEF_RUNTIME_LIBRARY_FLAG=/MD .
 		Pop-Location
 
 		$Arguments = @(
@@ -421,6 +421,9 @@ function CreateCefSdk
 
 	# cef_binary_3.y.z_windows32\debug -> cef\win32\debug
 	Copy-Item $CefArchDir\$Configuration\libcef.lib $CefWorkingFolder\$Arch\$Configuration | Out-Null
+	Copy-Item $CefArchDir\$Configuration\cef_sandbox.lib $CefWorkingFolder\$Arch\$Configuration | Out-Null
+	# Copy-Item $CefArchDir\$Configuration\chrome_elf_set.lib $CefWorkingFolder\$Arch\$Configuration | Out-Null
+	# Copy-Item $CefArchDir\$Configuration\libcef_dll_wrapper.lib $CefWorkingFolder\$Arch\$Configuration | Out-Null
 }
 
 function Nupkg
@@ -740,7 +743,7 @@ try
 		{
 			"nupkg"
 			{
-				VSX v142 $platform
+				VSX v143 $platform
 			}
 			"vs2022"
 			{
