@@ -587,6 +587,11 @@ function CopyFromLocalCefBuild()
 		Write-Diagnostic "Copy of $CefFileName complete"
 	}
 
+	$platformDir = $Platform.Folder
+	Write-Diagnostic "Clearing $platformDir"
+	# Always remove directory
+	Remove-Item $platformDir -Recurse | Out-Null
+
 	if (-not (Test-Path (Join-Path $Platform.Folder '\include\cef_version.h')))
 	{
 		ExtractArchive $LocalFile $CefFileName $Platform.Folder
